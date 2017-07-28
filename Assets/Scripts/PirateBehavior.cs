@@ -31,6 +31,7 @@ public class PirateBehavior : MonoBehaviour
 	public List<AudioClip> voices = new List<AudioClip>();
 
 	public GameObject pointPrefab;
+	public GameObject point2Prefab;
 
 	// Use this for initialization
 	void Start ()
@@ -75,16 +76,28 @@ public class PirateBehavior : MonoBehaviour
 	}
 
 	[ContextMenu("Hit")]
-	public void Hit()
+	public bool Hit(string bodyPart)
 	{
 		if (isHidden)
-			return;
+			return false;
 
 		if (!isDying)
 		{
 			movementTween.Kill();
 
-			GameObject go = Instantiate(pointPrefab, transform.position, Quaternion.identity);
+			GameObject go;
+
+			if (bodyPart == "Head")
+			{
+				go = Instantiate(point2Prefab, transform.position, Quaternion.identity);
+				SettingsManager.Instance.Score(2);
+			}
+			else
+			{
+				go = Instantiate(pointPrefab, transform.position, Quaternion.identity);
+				SettingsManager.Instance.Score(1);
+			}
+
 			go.GetComponent<SpriteRenderer>().DOFade(0, 2f);
 			go.transform.DOMoveY(go.transform.position.y + 2f, 2f);
 			Destroy(go, 2.5f);
@@ -99,5 +112,6 @@ public class PirateBehavior : MonoBehaviour
 			isDying = true;
 		}
 
+		return true;
 	}
 }

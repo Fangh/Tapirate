@@ -9,6 +9,8 @@ public class TargetMover : MonoBehaviour
 	public float speed = 1f;
 	public bool useKeyboard = true;
 
+	float yInverted = -1;
+
 	// Use this for initialization
 	void Start()
 	{
@@ -18,11 +20,22 @@ public class TargetMover : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		if (SettingsManager.Instance.inverseY)
+			yInverted = 1;
+		else
+			yInverted = -1;
+
+
 		Vector3 move = Vector3.zero;
 		if (useKeyboard)
 			move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * Time.deltaTime * speed;
 		else
-			move = new Vector3(Input.acceleration.x, Input.acceleration.y, 0) * Time.deltaTime * speed * 2f;
+		{
+			if (SettingsManager.Instance.horizontalMode)
+				move = new Vector3(Input.acceleration.x, -Input.acceleration.y * yInverted, 0) * Time.deltaTime * speed * 2f;
+			else
+				move = new Vector3(Input.acceleration.x, Input.acceleration.z * yInverted, 0) * Time.deltaTime * speed * 2f;
+		}
 
 
 		Rect screenSpace = new Rect(0,0,Screen.width, Screen.height);

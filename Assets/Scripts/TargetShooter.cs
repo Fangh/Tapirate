@@ -24,10 +24,20 @@ public class TargetShooter : MonoBehaviour
 			transform.DOShakePosition(0.5f, 0.05f, 50, 90);
 			AudioSource.PlayClipAtPoint(shotSFX[UnityEngine.Random.Range(0, shotSFX.Count)], transform.position);
 			Collider2D hit = Physics2D.OverlapPoint(transform.position);
-			if (hit != null && hit.name == "Pirate")
+			if (hit != null)
 			{
-				GetComponent<AudioSource>().PlayOneShot(hitSFX[UnityEngine.Random.Range(0, hitSFX.Count)]);
-				hit.GetComponent<PirateBehavior>().Hit();
+				if (hit.name == "Pirate")
+				{
+					if ( hit.GetComponent<PirateBehavior>().Hit("Body"))
+						GetComponent<AudioSource>().PlayOneShot(hitSFX[UnityEngine.Random.Range(0, hitSFX.Count)]);
+				}
+				else if (hit.name == "Head")
+				{
+					if (hit.transform.parent.GetComponent<PirateBehavior>().Hit("Head"))
+						GetComponent<AudioSource>().PlayOneShot(hitSFX[UnityEngine.Random.Range(0, hitSFX.Count)]);
+
+				}
+				
 			}
 		}
 

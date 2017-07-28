@@ -50,6 +50,9 @@ TagManager:
   - name: Wave1
     uniqueID: 2216402579
     locked: 0
+  - name: Shield
+    uniqueID: 2356762561
+    locked: 0
   - name: Target
     uniqueID: 1345694489
     locked: 0
