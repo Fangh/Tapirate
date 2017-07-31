@@ -33,12 +33,27 @@ public class PirateBehavior : MonoBehaviour
 	public GameObject pointPrefab;
 	public GameObject point2Prefab;
 
+	int exitBeforeFire = 0;
+	public int exitBeforeFireMin = 2;
+	public int exitBeforeFireMax = 7;
+
+	int currentExitCount = 0;
+
+	public GameObject bulletPrefab = null;
+
 	// Use this for initialization
 	void Start ()
 	{
 		ResetCooldown();
 		originalPos = transform.localPosition;
-		
+		ResetFireCount();
+	}
+
+	void ResetFireCount()
+	{
+		currentExitCount = 0;
+		exitBeforeFire = Random.Range(exitBeforeFireMin, exitBeforeFireMax);
+
 	}
 
 	void ResetCooldown()
@@ -49,7 +64,6 @@ public class PirateBehavior : MonoBehaviour
 		canGoOut = true;
 	}
 	
-
 	// Update is called once per frame
 	void Update ()
 	{
@@ -62,6 +76,7 @@ public class PirateBehavior : MonoBehaviour
 			if (!canGoOut)
 				return;
 
+			currentExitCount++;
 			isHidden = false;
 			canGoOut = false;
 			GetComponent<AudioSource>().PlayOneShot(voices[Random.Range(0, voices.Count)]);
@@ -73,6 +88,17 @@ public class PirateBehavior : MonoBehaviour
 			currentCooldown += Time.deltaTime;
 			isHidden = true;
 		}
+
+		if (currentExitCount >= exitBeforeFire)
+		{
+			ResetFireCount();
+			Fire();
+		}
+	}
+
+	void Fire()
+	{
+		Instantiate(bulletPrefab, transform.position, Quaternion.identity);
 	}
 
 	[ContextMenu("Hit")]

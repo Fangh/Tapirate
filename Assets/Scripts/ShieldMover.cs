@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class ShieldMover : MonoBehaviour
 {
@@ -9,6 +10,13 @@ public class ShieldMover : MonoBehaviour
 	public float maxY = -4f;
 	public float speed = 10f;
 	float move;
+
+	public static ShieldMover Instance;
+
+	private void Awake()
+	{
+		Instance = this;
+	}
 
 	// Use this for initialization
 	void Start ()
@@ -21,7 +29,6 @@ public class ShieldMover : MonoBehaviour
 	void Update ()
 	{
 		MoveByTargetPos();
-
 	}
 
 	void MoveByTargetPos()
@@ -46,5 +53,10 @@ public class ShieldMover : MonoBehaviour
 		if (transform.position.y + move > minY && transform.position.y + move < maxY)
 			transform.Translate(0, move, 0);
 
+	}
+
+	public void Hit()
+	{
+		transform.DOShakePosition(0.5f, 0.25f, 10);
 	}
 }

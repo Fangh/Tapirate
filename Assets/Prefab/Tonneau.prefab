@@ -341,6 +341,10 @@ MonoBehaviour:
     type: 2}
   point2Prefab: {fileID: 1859515555167122, guid: 5155f716c40407d4d92f318bfadea28b,
     type: 2}
+  exitBeforeFireMin: 5
+  exitBeforeFireMax: 20
+  bulletPrefab: {fileID: 1444657456577222, guid: 6429b34392045b14a93228e78d94f44a,
+    type: 2}
 --- !u!212 &212355483331673668
 SpriteRenderer:
   m_ObjectHideFlags: 1
