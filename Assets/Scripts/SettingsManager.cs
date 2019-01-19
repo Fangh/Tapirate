@@ -31,7 +31,6 @@ public class SettingsManager : MonoBehaviour
 		{
 			Debug.Log("coucou)");
 			SceneManager.LoadSceneAsync(0);
-
 		}
 	}
 
