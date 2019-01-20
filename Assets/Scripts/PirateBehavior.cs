@@ -113,12 +113,12 @@ public class PirateBehavior : MonoBehaviour
             if (bodyPart == "Head")
             {
                 go = Instantiate(point2Prefab, transform.position, Quaternion.identity);
-                SettingsManager.Instance.Score(2);
+                Managers.Instance.settingsManager.Score(2);
             }
             else
             {
                 go = Instantiate(pointPrefab, transform.position, Quaternion.identity);
-                SettingsManager.Instance.Score(1);
+                Managers.Instance.settingsManager.Score(1);
             }
 
             go.GetComponent<SpriteRenderer>().DOFade(0, 2f);

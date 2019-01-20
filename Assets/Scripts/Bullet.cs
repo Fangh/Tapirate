@@ -5,18 +5,21 @@ using DG.Tweening;
 
 public class Bullet : MonoBehaviour
 {
-	public LayerMask layer;
-	public float shakeStrength = 1;
-	public int shakeVibrato = 10;
-	public float timeBeforeHit = 2;
+    [Header("Tweaking")]
+	[SerializeField] private LayerMask shieldLayer;
+    [SerializeField] private float shakeStrength = 1;
+    [SerializeField] private int shakeVibrato = 10;
+    [SerializeField] private float timeBeforeHit = 2;
+    [SerializeField] private float yTarget = -4f;
+    [SerializeField] private float endScale = 3f;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
 	{
 		Vector3 pos = transform.position;
-		GetComponent<Transform>().DOScale(1.5f, timeBeforeHit).OnComplete(Hit);
+		GetComponent<Transform>().DOScale(endScale, timeBeforeHit).OnComplete(Hit).SetEase(Ease.Linear);
 		GetComponent<Transform>().DOShakePosition(timeBeforeHit, shakeStrength, shakeVibrato);
-		GetComponent<Transform>().DOMoveY(pos.y - 1, timeBeforeHit);
+		GetComponent<Transform>().DOMoveY(yTarget, timeBeforeHit).SetEase(Ease.Linear);
 	}
 	
 	// Update is called once per frame
@@ -27,7 +30,7 @@ public class Bullet : MonoBehaviour
 	
 	void Hit()
 	{
-		if (Physics2D.OverlapPoint(transform.position, layer))
+		if (Physics2D.OverlapPoint(transform.position, shieldLayer))
 		{
 			ShieldMover.Instance.Hit();
 		}
@@ -35,7 +38,6 @@ public class Bullet : MonoBehaviour
 		{
 			Camera.main.DOShakePosition(0.5f, 0.25f, 10);
 		}
-
 		Destroy(gameObject);
 	}
 }

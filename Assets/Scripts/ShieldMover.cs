@@ -45,7 +45,7 @@ public class ShieldMover : MonoBehaviour
 
 	void MoveByAcceleration()
 	{
-		if (SettingsManager.Instance.horizontalMode)
+		if (Managers.Instance.settingsManager.horizontalMode)
 			move = -Input.acceleration.y * Time.deltaTime * speed;
 		else
 			move = Input.acceleration.z * Time.deltaTime * speed;

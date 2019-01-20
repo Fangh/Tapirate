@@ -20,7 +20,7 @@ public class TargetMover : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (SettingsManager.Instance.inverseY)
+		if (Managers.Instance.settingsManager.inverseY)
 			yInverted = 1;
 		else
 			yInverted = -1;
@@ -30,7 +30,7 @@ public class TargetMover : MonoBehaviour
 			move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * Time.deltaTime * speed;
 		else
 		{
-			if (SettingsManager.Instance.horizontalMode)
+			if (Managers.Instance.settingsManager.horizontalMode)
 				move = new Vector3(Input.acceleration.x, -Input.acceleration.y * yInverted, 0) * Time.deltaTime * speed * 2f;
 			else
 				move = new Vector3(Input.acceleration.x, Input.acceleration.z * yInverted, 0) * Time.deltaTime * speed * 2f;
