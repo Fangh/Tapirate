@@ -14,6 +14,7 @@ public class PirateBehavior : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private GameObject muzzleFlash;
+    [SerializeField] private SpriteRenderer bodyRenderer;
     [SerializeField] private GameObject pointPrefab;
     [SerializeField] private GameObject point2Prefab;
     [SerializeField] private GameObject bulletPrefab = null;
@@ -91,7 +92,7 @@ public class PirateBehavior : MonoBehaviour
     {
         Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         muzzleFlash.SetActive(true);
-        muzzleFlash.transform.DOScale(2, 0.2f).OnComplete(() => 
+        muzzleFlash.transform.DOScale(2, 0.2f).OnComplete(() =>
         {
             muzzleFlash.transform.localScale = Vector3.zero;
             muzzleFlash.SetActive(false);
@@ -108,30 +109,30 @@ public class PirateBehavior : MonoBehaviour
         {
             movementTween.Kill();
 
-            GameObject go;
+            GameObject pointFeedback;
 
             if (bodyPart == "Head")
             {
-                go = Instantiate(point2Prefab, transform.position, Quaternion.identity);
+                pointFeedback = Instantiate(point2Prefab, transform.position, Quaternion.identity);
                 Managers.Instance.settingsManager.Score(2);
             }
             else
             {
-                go = Instantiate(pointPrefab, transform.position, Quaternion.identity);
+                pointFeedback = Instantiate(pointPrefab, transform.position, Quaternion.identity);
                 Managers.Instance.settingsManager.Score(1);
             }
 
-            go.GetComponent<SpriteRenderer>().DOFade(0, 2f);
-            go.transform.DOMoveY(go.transform.position.y + 2f, 2f);
-            Destroy(go, 2.5f);
+            pointFeedback.GetComponent<SpriteRenderer>().DOFade(0, 2f);
+            pointFeedback.transform.DOMoveY(pointFeedback.transform.position.y + 2f, 2f);
+            Destroy(pointFeedback, 2.5f);
 
-            GetComponent<SpriteRenderer>().DOColor(new Color(0, 0, 0, 0), flashTime).SetEase(Ease.InOutFlash, flashAmplitude, flashPeriod).OnComplete(() =>
-           {
-               ResetCooldown();
-               isDying = false;
-               transform.localPosition = originalPos;
-               GetComponent<SpriteRenderer>().color = Color.white;
-           });
+            bodyRenderer.DOColor(new Color(0, 0, 0, 0), flashTime).SetEase(Ease.InOutFlash, flashAmplitude, flashPeriod).OnComplete(() =>
+            {
+                ResetCooldown();
+                isDying = false;
+                transform.localPosition = originalPos;
+                bodyRenderer.color = Color.white;
+            });
             isDying = true;
         }
 

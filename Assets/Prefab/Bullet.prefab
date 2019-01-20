@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4865053892983916}
   - component: {fileID: 212435927936554444}
   - component: {fileID: 114670436192888334}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shieldLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4096
   shakeStrength: 0.2
   shakeVibrato: 50
   timeBeforeHit: 2

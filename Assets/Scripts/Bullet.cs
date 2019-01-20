@@ -6,7 +6,6 @@ using DG.Tweening;
 public class Bullet : MonoBehaviour
 {
     [Header("Tweaking")]
-	[SerializeField] private LayerMask shieldLayer;
     [SerializeField] private float shakeStrength = 1;
     [SerializeField] private int shakeVibrato = 10;
     [SerializeField] private float timeBeforeHit = 2;
@@ -30,9 +29,11 @@ public class Bullet : MonoBehaviour
 	
 	void Hit()
 	{
-		if (Physics2D.OverlapPoint(transform.position, shieldLayer))
+        Collider2D[] results = new Collider2D[1];
+        ContactFilter2D contactFilter = new ContactFilter2D();
+		if (Physics2D.OverlapPoint(transform.position, contactFilter, results) > 0)
 		{
-			ShieldMover.Instance.Hit();
+            results[0].GetComponent<ShieldMover>().Hit();
 		}
 		else
 		{
