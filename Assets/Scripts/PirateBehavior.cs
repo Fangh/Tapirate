@@ -128,14 +128,25 @@ public class PirateBehavior : MonoBehaviour
 
             bodyRenderer.DOColor(new Color(0, 0, 0, 0), flashTime).SetEase(Ease.InOutFlash, flashAmplitude, flashPeriod).OnComplete(() =>
             {
-                ResetCooldown();
-                isDying = false;
-                transform.localPosition = originalPos;
-                bodyRenderer.color = Color.white;
+                Die();
             });
             isDying = true;
         }
-
         return true;
+    }
+
+    private void Die()
+    {
+        bodyRenderer.enabled = false;
+        enabled = false;
+    }
+
+    private void Revive()
+    {
+        ResetCooldown();
+        isDying = false;
+        transform.localPosition = originalPos;
+        bodyRenderer.color = Color.white;
+
     }
 }
