@@ -748,8 +748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc0f39238a9d10e49a0f8625f57f1fc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
-  useKeyboard: 1
+  speed: 10
 --- !u!4 &889879001
 Transform:
   m_ObjectHideFlags: 0
@@ -1717,8 +1716,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92ba47ae0e98a14bbc979b2fe167f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitSFX: []
-  shotSFX: []
+  hitSFX:
+  - {fileID: 8300000, guid: 0c89e08c68cc6b54eafcbef143a3d43c, type: 3}
+  - {fileID: 8300000, guid: 3ab695ca7792b7f498d4d548bec5f6ce, type: 3}
+  - {fileID: 8300000, guid: de010d495556fd04197cb47baf97c9dd, type: 3}
+  - {fileID: 8300000, guid: f38b46a554e04f54d9dc6a5ce5f36f81, type: 3}
+  shotSFX:
+  - {fileID: 8300000, guid: 7dac37216586fce48a0e9dc1bcf60253, type: 3}
+  - {fileID: 8300000, guid: 6352c26c15c77b24abe579cd51a6a07f, type: 3}
+  - {fileID: 8300000, guid: f52d35e0e3bdec642ab4063891f1098a, type: 3}
+  - {fileID: 8300000, guid: e9241e5d60a8cad46b9197e5eb0935e4, type: 3}
+  - {fileID: 8300000, guid: aea67b1d3b53ffb4e9c8f52f7bcbff4e, type: 3}
+  - {fileID: 8300000, guid: 0584ed9f470dd354baf4a4e6f9de0b2e, type: 3}
 --- !u!212 &1887138384
 SpriteRenderer:
   m_ObjectHideFlags: 0
