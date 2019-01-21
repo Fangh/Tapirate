@@ -7,7 +7,11 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private GameObject loadingScreen; //must be setActive False in scene
+
     private Scene currentLevel;
+    private string levelToLoad = null;
 
     private void OnEnable()
     {
@@ -28,19 +32,26 @@ public class LevelManager : MonoBehaviour
 
     private void OnSceneUnloaded(Scene scene)
     {
-        Debug.Log($"{scene.name} has been unloaded");
+        //Debug.Log($"{scene.name} has been unloaded");
+        if (levelToLoad != null)
+        {
+            SceneManager.LoadSceneAsync(levelToLoad, LoadSceneMode.Additive);
+        }
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode loadMode)
     {
         SceneManager.SetActiveScene(scene);
         currentLevel = scene;
+        levelToLoad = null;
+        loadingScreen.SetActive(false);
     }
 
-    public void StartGame(Button button)
+    public void GoToLevel(string levelName)
     {
-        button.interactable = false;
-        SceneManager.LoadSceneAsync(1);
+        loadingScreen.SetActive(true);
+        levelToLoad = levelName;
+        SceneManager.UnloadSceneAsync(currentLevel);
     }
 
     // Update is called once per frame

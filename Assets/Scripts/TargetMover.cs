@@ -7,8 +7,6 @@ using DG.Tweening;
 public class TargetMover : MonoBehaviour
 {
 	public float speed = 1f;
-	public bool useKeyboard = true;
-
 	float yInverted = -1;
 
 	// Use this for initialization
@@ -26,17 +24,17 @@ public class TargetMover : MonoBehaviour
 			yInverted = -1;
 		
 		Vector3 move = Vector3.zero;
-		if (useKeyboard)
-			move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * Time.deltaTime * speed;
-		else
-		{
+
+#if UNITY_ANDROID && !UNITY_EDITOR
 			if (Managers.Instance.settingsManager.horizontalMode)
 				move = new Vector3(Input.acceleration.x, -Input.acceleration.y * yInverted, 0) * Time.deltaTime * speed * 2f;
 			else
 				move = new Vector3(Input.acceleration.x, Input.acceleration.z * yInverted, 0) * Time.deltaTime * speed * 2f;
-		}
-		
-		Rect screenSpace = new Rect(0,0,Screen.width, Screen.height);
+#else
+        move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * Time.deltaTime * speed;
+#endif
+
+        Rect screenSpace = new Rect(0,0,Screen.width, Screen.height);
 		Vector3 posInScreenSpace = Camera.main.WorldToScreenPoint(transform.position + move);
 		
 		//Debug.Log("new pos : " + posInScreenSpace + " is in " + screenSpace + " ? ");

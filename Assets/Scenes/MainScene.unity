@@ -393,10 +393,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26dcde15ff9c5c041bce1d7a78b46d45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetMover: {fileID: 889879000}
+  targetMover: {fileID: 0}
   minY: -10
   maxY: -4
-  speed: 20
+  speed: 10
 --- !u!61 &561732427
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -445,7 +445,6 @@ GameObject:
   m_Component:
   - component: {fileID: 864138423}
   - component: {fileID: 864138422}
-  - component: {fileID: 864138421}
   - component: {fileID: 864138420}
   - component: {fileID: 864138419}
   - component: {fileID: 864138424}
@@ -465,14 +464,6 @@ AudioListener:
   m_GameObject: {fileID: 864138418}
   m_Enabled: 1
 --- !u!124 &864138420
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 864138418}
-  m_Enabled: 1
---- !u!92 &864138421
 Behaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -757,7 +748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc0f39238a9d10e49a0f8625f57f1fc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 1
   useKeyboard: 1
 --- !u!4 &889879001
 Transform:
@@ -1008,11 +999,6 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 111606831912017366, guid: e18f632b9ab44a3438322ee4961574ed,
-        type: 3}
-      propertyPath: m_Animation
-      value: 
-      objectReference: {fileID: 7400000, guid: 096a549d87679bf4fbf557e954947da3, type: 2}
     - target: {fileID: 458556524231227232, guid: e18f632b9ab44a3438322ee4961574ed,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -1023,6 +1009,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 111606831912017366, guid: e18f632b9ab44a3438322ee4961574ed,
+        type: 3}
+      propertyPath: m_Animation
+      value: 
+      objectReference: {fileID: 7400000, guid: 096a549d87679bf4fbf557e954947da3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e18f632b9ab44a3438322ee4961574ed, type: 3}
 --- !u!1001 &1072084137
@@ -1136,6 +1127,16 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 458556524231227232, guid: e18f632b9ab44a3438322ee4961574ed,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1122418511
+      objectReference: {fileID: 0}
+    - target: {fileID: 458556524231227232, guid: e18f632b9ab44a3438322ee4961574ed,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 111606831912017366, guid: e18f632b9ab44a3438322ee4961574ed,
         type: 3}
       propertyPath: m_Animations.Array.size
@@ -1151,16 +1152,6 @@ PrefabInstance:
       propertyPath: m_Animations.Array.data[3]
       value: 
       objectReference: {fileID: 7400000, guid: 3cb14103131257748bd3228a99d55b53, type: 2}
-    - target: {fileID: 458556524231227232, guid: e18f632b9ab44a3438322ee4961574ed,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1122418511
-      objectReference: {fileID: 0}
-    - target: {fileID: 458556524231227232, guid: e18f632b9ab44a3438322ee4961574ed,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e18f632b9ab44a3438322ee4961574ed, type: 3}
 --- !u!1001 &1250807357
@@ -1274,6 +1265,16 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 458556524231227232, guid: e18f632b9ab44a3438322ee4961574ed,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1122418511
+      objectReference: {fileID: 0}
+    - target: {fileID: 458556524231227232, guid: e18f632b9ab44a3438322ee4961574ed,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 111606831912017366, guid: e18f632b9ab44a3438322ee4961574ed,
         type: 3}
       propertyPath: m_Animations.Array.size
@@ -1289,16 +1290,6 @@ PrefabInstance:
       propertyPath: m_Animations.Array.data[3]
       value: 
       objectReference: {fileID: 7400000, guid: 3cb14103131257748bd3228a99d55b53, type: 2}
-    - target: {fileID: 458556524231227232, guid: e18f632b9ab44a3438322ee4961574ed,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1122418511
-      objectReference: {fileID: 0}
-    - target: {fileID: 458556524231227232, guid: e18f632b9ab44a3438322ee4961574ed,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e18f632b9ab44a3438322ee4961574ed, type: 3}
 --- !u!4 &1254776281 stripped
@@ -1726,18 +1717,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92ba47ae0e98a14bbc979b2fe167f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitSFX:
-  - {fileID: 8300000, guid: 0c89e08c68cc6b54eafcbef143a3d43c, type: 3}
-  - {fileID: 8300000, guid: 3ab695ca7792b7f498d4d548bec5f6ce, type: 3}
-  - {fileID: 8300000, guid: de010d495556fd04197cb47baf97c9dd, type: 3}
-  - {fileID: 8300000, guid: f38b46a554e04f54d9dc6a5ce5f36f81, type: 3}
-  shotSFX:
-  - {fileID: 8300000, guid: 7dac37216586fce48a0e9dc1bcf60253, type: 3}
-  - {fileID: 8300000, guid: 6352c26c15c77b24abe579cd51a6a07f, type: 3}
-  - {fileID: 8300000, guid: f52d35e0e3bdec642ab4063891f1098a, type: 3}
-  - {fileID: 8300000, guid: e9241e5d60a8cad46b9197e5eb0935e4, type: 3}
-  - {fileID: 8300000, guid: aea67b1d3b53ffb4e9c8f52f7bcbff4e, type: 3}
-  - {fileID: 8300000, guid: 0584ed9f470dd354baf4a4e6f9de0b2e, type: 3}
+  hitSFX: []
+  shotSFX: []
 --- !u!212 &1887138384
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2007,6 +1988,16 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 458556524231227232, guid: e18f632b9ab44a3438322ee4961574ed,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1122418511
+      objectReference: {fileID: 0}
+    - target: {fileID: 458556524231227232, guid: e18f632b9ab44a3438322ee4961574ed,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 111606831912017366, guid: e18f632b9ab44a3438322ee4961574ed,
         type: 3}
       propertyPath: m_Animations.Array.size
@@ -2022,16 +2013,6 @@ PrefabInstance:
       propertyPath: m_Animations.Array.data[3]
       value: 
       objectReference: {fileID: 7400000, guid: 3cb14103131257748bd3228a99d55b53, type: 2}
-    - target: {fileID: 458556524231227232, guid: e18f632b9ab44a3438322ee4961574ed,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1122418511
-      objectReference: {fileID: 0}
-    - target: {fileID: 458556524231227232, guid: e18f632b9ab44a3438322ee4961574ed,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e18f632b9ab44a3438322ee4961574ed, type: 3}
 --- !u!1 &2016776464

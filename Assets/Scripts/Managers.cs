@@ -11,4 +11,5 @@ public class Managers : MonoBehaviour
 
     [Header("References")]
     public SettingsManager settingsManager;
+    public LevelManager levelManager;
 }
