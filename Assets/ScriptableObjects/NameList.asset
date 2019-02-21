@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 962bfff8c1294c8458949675643499c1, type: 3}
+  m_Name: NameList
+  m_EditorClassIdentifier: 
+  firstNames:
+  - Anne
+  - Barthilomew
+  - Benjamin
+  - Calico
+  - Charles
+  - Edward
+  - Grace
+  - Henry
+  - Howell
+  - Mary
+  - Paulsgrave
+  - Samuel
+  - Stede
+  - Thomas
+  - Turgut
+  - William
+  - Christopher
+  - Emanual
+  - Peter
+  - Richard
+  - Francis
+  - Jean
+  - Woodes
+  - "Fran\xE7ois"
+  - Sayyida
+  - Ching
+  - Cheung
+  lastNames:
+  - Morgan
+  - Myngs
+  - L'Ollonais
+  - Rogers
+  - Laffite
+  - Drake
+  - al Hurra
+  - Worley
+  - Easton
+  - Wynn
+  - Moody
+  - Contend
+  - Shih
+  - Kidd
+  - Reis
+  - Tew
+  - Bonnet
+  - Bellamy
+  - Williams
+  - Read
+  - Davis
+  - Every
+  - O'Malley
+  - Low
+  - England
+  - Po Tsai
+  - Vane
+  - Jack
+  - Hornigold
+  - Roberts
+  - Bonny

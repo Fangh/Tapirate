@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: d3c9f23d74fcd8b4f8968d72656cfb1b
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Fanwood
+  fontNames:
+  - Fanwood
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 71a6d3bbb88bf314aa9f00cd8f3049e5, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

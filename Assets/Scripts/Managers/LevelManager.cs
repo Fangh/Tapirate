@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -18,7 +14,7 @@ public class LevelManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.sceneUnloaded += OnSceneUnloaded;
 
-        if( SceneManager.sceneCount == 1)
+        if (SceneManager.sceneCount == 1)
         {
             SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
         }
@@ -62,6 +58,4 @@ public class LevelManager : MonoBehaviour
             SceneManager.LoadSceneAsync(0);
         }
     }
-
-
 }
