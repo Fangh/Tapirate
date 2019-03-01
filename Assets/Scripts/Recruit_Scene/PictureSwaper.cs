@@ -30,7 +30,10 @@ public class PictureSwaper : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
             pictureAnimator.Play(swipeRightAnimID, 0, pictureAnimator.GetFloat(playbackTimeParameterID));
         }
         else
+        {
             pictureAnimator.Play(DiscardAnimID);
+            EventManager.Trigger("PirateDiscarded");
+        }
     }
 
     public void OnDrag(PointerEventData eventData)

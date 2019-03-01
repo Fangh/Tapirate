@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PirateProfilGenerator : MonoBehaviour
 {
@@ -11,15 +12,39 @@ public class PirateProfilGenerator : MonoBehaviour
     [SerializeField] private NameListAsset nameList;
     [SerializeField] private TextMeshProUGUI nameTextMesh;
 
+    private Stack<GameObject> piratePictures = new Stack<GameObject>();
+    private GameObject currentPicture = null;
     // Start is called before the first frame update
-    [ContextMenu("ChangeName")]
+    void Awake()
+    {
+        EventManager.Bind("PirateDiscarded", NextPirate);
+    }
+
     void Start()
     {
-        nameTextMesh.text = string.Format("{0} {1}", nameList.firstNames[Random.Range(0, nameList.firstNames.Count - 1)], nameList.lastNames[Random.Range(0, nameList.lastNames.Count - 1)]);
-
         for(int i = 0; i < numberToGenerate; i++)
         {
-            Instantiate(picturePrefab, picturePos);
+            S_PirateData pirate = new S_PirateData(CreateRandomName(), 12, 50);
+            piratePictures.Push(Instantiate(picturePrefab, picturePos));
         }
+        currentPicture = piratePictures.Peek();
+    }
+
+    void NextPirate()
+    {
+        currentPicture = piratePictures.Pop();
+        currentPicture = piratePictures.Peek();
+        SetRandomColor();
+        nameTextMesh.text = CreateRandomName();
+    }
+
+    string CreateRandomName()
+    {
+        return string.Format("{0} {1}", nameList.firstNames[Random.Range(0, nameList.firstNames.Count - 1)], nameList.lastNames[Random.Range(0, nameList.lastNames.Count - 1)]);
+    }
+
+    void SetRandomColor()
+    {
+        currentPicture.GetComponentInChildren<Image>().color = Random.ColorHSV();
     }
 }
