@@ -9,30 +9,54 @@ public class PictureSwaper : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     private float inputDownXStart;
 
-    private int swipeRightAnimID = Animator.StringToHash("SwipeRight");
-    private int SwipeRight_PlaybackModeAnimID = Animator.StringToHash("SwipeRight_PlaybackMode");
-    private int DiscardAnimID = Animator.StringToHash("Discard");
-    private int playbackTimeParameterID = Animator.StringToHash("PlaybackTime");
-    private int SpeedMultiplierParameterID = Animator.StringToHash("SpeedMultiplier");
+    private int anim_swipeRight = Animator.StringToHash("SwipeRight");
+    private int anim_swipeRightPBMode = Animator.StringToHash("SwipeRight_PlaybackMode");
+    private int anim_discardRight = Animator.StringToHash("DiscardRight");
+    private int anim_swipeLeft = Animator.StringToHash("SwipeLeft");
+    private int anim_swipeLeftPBMode = Animator.StringToHash("SwipeLeft_PlaybackMode");
+    private int anim_discardLeft = Animator.StringToHash("DiscardLeft");
+    private int parameter_playbackTime = Animator.StringToHash("PlaybackTime");
+    private int parameter_speedMultiplier = Animator.StringToHash("SpeedMultiplier");
 
     public void OnPointerDown(PointerEventData eventData)
     {
         inputDownXStart = eventData.position.x;
-        pictureAnimator.Play(SwipeRight_PlaybackModeAnimID);
-        pictureAnimator.SetFloat(playbackTimeParameterID, 0);
+        pictureAnimator.SetFloat(parameter_playbackTime, 0);
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (pictureAnimator.GetFloat(playbackTimeParameterID) < marginToDiscard)
+        if(eventData.position.x < inputDownXStart)
         {
-            pictureAnimator.SetFloat(SpeedMultiplierParameterID, -1f);
-            pictureAnimator.Play(swipeRightAnimID, 0, pictureAnimator.GetFloat(playbackTimeParameterID));
+            //between center and far left
+            if (pictureAnimator.GetFloat(parameter_playbackTime) > 0
+            && pictureAnimator.GetFloat(parameter_playbackTime) < marginToDiscard)
+            {
+                pictureAnimator.SetFloat(parameter_speedMultiplier, -1f);
+                pictureAnimator.Play(anim_swipeLeft, 0, pictureAnimator.GetFloat(parameter_playbackTime));
+            }
+            //far left
+            else
+            {
+                pictureAnimator.Play(anim_discardLeft);
+                EventManager.Trigger("PirateDiscarded");
+            }
         }
         else
         {
-            pictureAnimator.Play(DiscardAnimID);
-            EventManager.Trigger("PirateDiscarded");
+            //between center and far right
+            if (pictureAnimator.GetFloat(parameter_playbackTime) > 0 
+                && pictureAnimator.GetFloat(parameter_playbackTime) < marginToDiscard)
+            {
+                pictureAnimator.SetFloat(parameter_speedMultiplier, -1f);
+                pictureAnimator.Play(anim_swipeRight, 0, pictureAnimator.GetFloat(parameter_playbackTime));
+            }
+            //far right
+            else
+            {
+                pictureAnimator.Play(anim_discardRight);
+                //EventManager.Trigger("PirateChoosen");
+            }
         }
     }
 
@@ -41,8 +65,13 @@ public class PictureSwaper : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         float delta = eventData.position.x - inputDownXStart;
         if (delta > 0)
         {
-            delta = Mathf.Clamp(delta, 0, 500);
-            pictureAnimator.SetFloat(playbackTimeParameterID, delta / 500f);
+            pictureAnimator.Play(anim_swipeRightPBMode);
         }
+        else if (delta < 0)
+        {
+            pictureAnimator.Play(anim_swipeLeftPBMode);
+        }
+        delta = Mathf.Abs(Mathf.Clamp(delta, -500, 500));
+        pictureAnimator.SetFloat(parameter_playbackTime, delta / 500f);
     }
 }
