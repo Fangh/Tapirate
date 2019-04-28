@@ -1,12 +1,12 @@
 ﻿using System;
 
 [Serializable]
-public struct S_MinMax
+public struct SMinMax
 {
     public float min;
     public float max;
 
-    public S_MinMax(float _min, float _max)
+    public SMinMax(float _min, float _max)
     {
         min = _min;
         max = _max;

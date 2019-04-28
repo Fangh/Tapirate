@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
+using System;
 
-public struct S_PirateData
+[Serializable]
+public struct SPirate
 {
     public string name;
     public int salary;
@@ -11,7 +13,7 @@ public struct S_PirateData
     public string[] languages;
     public Color pictureColor;
 
-    public S_PirateData(string _name, int _salary, int _age)
+    public SPirate(string _name, int _salary, int _age)
     {
         name = _name;
         salary = _salary;
@@ -20,6 +22,6 @@ public struct S_PirateData
         skills = new string[]{ "a", "b"};
         instrument = "lol";
         languages = new string[] { "a" };
-        pictureColor = Random.ColorHSV();
+        pictureColor = UnityEngine.Random.ColorHSV();
     }
 }

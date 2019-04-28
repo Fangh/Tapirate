@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PictureSwaper : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
+public class CardSwaper : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
     [Header("References")]
     [SerializeField] private Animator pictureAnimator;

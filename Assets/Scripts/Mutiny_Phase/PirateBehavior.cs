@@ -5,9 +5,9 @@ using UnityEngine;
 public class PirateBehavior : MonoBehaviour
 {
     [Header("Tweaking")]
-    [SerializeField] private S_MinMax cooldownRandomized = new S_MinMax(1f, 5f);
-    [SerializeField] private S_MinMax movementDurationRandomized = new S_MinMax(0.5f, 2f);
-    [SerializeField] private S_MinMax fireFrequenceRandomized = new S_MinMax(2, 7);
+    [SerializeField] private SMinMax cooldownRandomized = new SMinMax(1f, 5f);
+    [SerializeField] private SMinMax movementDurationRandomized = new SMinMax(0.5f, 2f);
+    [SerializeField] private SMinMax fireFrequenceRandomized = new SMinMax(2, 7);
     [SerializeField] private float flashTime = 1f;
     [SerializeField] private float flashAmplitude = 5;
     [SerializeField] private float flashPeriod = 1f;

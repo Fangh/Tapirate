@@ -7,12 +7,12 @@ using UnityEngine.UI;
 public class PirateProfilGenerator : MonoBehaviour
 {
     [SerializeField] private int numberToGenerate;
-    [SerializeField] private GameObject picturePrefab;
+    [SerializeField] private GameObject cardPrefab;
     [SerializeField] private Transform picturePos;
     [SerializeField] private NameListAsset nameList;
     [SerializeField] private TextMeshProUGUI nameTextMesh;
 
-    private Stack<GameObject> piratePictures = new Stack<GameObject>();
+    private Stack<GameObject> pirateCards = new Stack<GameObject>();
     private GameObject currentPicture = null;
     // Start is called before the first frame update
     void Awake()
@@ -24,16 +24,16 @@ public class PirateProfilGenerator : MonoBehaviour
     {
         for(int i = 0; i < numberToGenerate; i++)
         {
-            S_PirateData pirate = new S_PirateData(CreateRandomName(), 12, 50);
-            piratePictures.Push(Instantiate(picturePrefab, picturePos));
+            SPirate pirate = new SPirate(CreateRandomName(), 12, 50);
+            pirateCards.Push(Instantiate(cardPrefab, picturePos));
         }
-        currentPicture = piratePictures.Peek();
+        currentPicture = pirateCards.Peek();
     }
 
     void NextPirate()
     {
-        currentPicture = piratePictures.Pop();
-        currentPicture = piratePictures.Peek();
+        currentPicture = pirateCards.Pop();
+        currentPicture = pirateCards.Peek();
         SetRandomColor();
         nameTextMesh.text = CreateRandomName();
     }
