@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "NameList", menuName = "ScriptableObjects/NameList", order = 1)]
+[CreateAssetMenu(fileName = "NameList", menuName = "ScriptableObjects/Name List", order = 1)]
 public class NameListAsset : ScriptableObject
 {
     public List<string> firstNames;
